@@ -15,11 +15,9 @@
         </header>
 
         <main class="content">
-            <div class="history-summary">
-                <div class="summary-box">
-                    <span class="summary-label">商品数</span>
-                    <span class="summary-value">{{ data|length }}</span>
-                </div>
+            <div class="summary-box">
+                <span class="summary-label">商品数</span>
+                <span class="summary-value">{{ data|length }}</span>
             </div>
 
             <div class="history-list">
@@ -36,10 +34,10 @@
         </main>
 
         <nav class="bottom-nav">
-            <a href="/" class="nav-item">入力</a>
-            <a href="/list" class="nav-item">在庫</a>
-            <a href="/history" class="nav-item active">履歴</a>
-            <a href="/monthly" class="nav-item">月別</a>
+            <a href="/">入力</a>
+            <a href="/list">在庫</a>
+            <a href="/history" class="active">履歴</a>
+            <a href="/monthly">月別</a>
         </nav>
     </div>
 </body>
