@@ -1,37 +1,55 @@
 body {
     margin: 0;
     padding: 0;
-    font-family: sans-serif;
-    background: #f3f0eb;
+    font-family: "Hiragino Sans", "Yu Gothic", sans-serif;
+    background: #f5f1eb;
+    color: #4b3428;
     display: flex;
     justify-content: center;
     padding: 20px 0;
 }
 
-.phone {
+.phone-frame {
     width: 390px;
     min-height: 844px;
-    background: #f7f3ef;
+    background: #f3eee7;
     border-radius: 28px;
     overflow: hidden;
-    box-shadow: 0 4px 16px rgba(0,0,0,0.15);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
     position: relative;
 }
 
-.app-header {
-    background: #8b6a52;
+.top-bar {
+    height: 72px;
+    background: linear-gradient(180deg, #8b654f, #7a563f);
     color: white;
-    text-align: center;
-    padding: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 18px;
+    box-sizing: border-box;
 }
 
-.app-header h1 {
+.top-bar h1 {
     margin: 0;
     font-size: 22px;
+    font-weight: 700;
+}
+
+.back-button {
+    color: white;
+    text-decoration: none;
+    font-size: 34px;
+    line-height: 1;
+}
+
+.top-bar-space {
+    width: 24px;
 }
 
 .content {
     padding: 16px 16px 90px;
+    box-sizing: border-box;
 }
 
 .card {
@@ -39,10 +57,11 @@ body {
     padding: 16px;
     border-radius: 12px;
     margin-bottom: 16px;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
 }
 
-input, select {
+input,
+select {
     width: 100%;
     padding: 10px;
     margin-top: 6px;
@@ -50,6 +69,8 @@ input, select {
     border-radius: 8px;
     border: 1px solid #ccc;
     box-sizing: border-box;
+    font-size: 16px;
+    background: white;
 }
 
 button {
@@ -60,6 +81,7 @@ button {
     border: none;
     border-radius: 10px;
     font-size: 16px;
+    cursor: pointer;
 }
 
 .list-item {
@@ -70,45 +92,9 @@ button {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
 }
 
-.status {
-    padding: 4px 10px;
-    border-radius: 999px;
-    color: white;
-    font-size: 13px;
-    font-weight: bold;
-}
-
-.danger {
-    background: #d9534f;
-}
-
-.warning {
-    background: #f0ad4e;
-}
-
-.safe {
-    background: #5cb85c;
-}
-
-.bottom-nav {
-    position: absolute;
-    bottom: 0;
-    width: 100%;
-    background: #6f4e37;
-    display: flex;
-    justify-content: space-around;
-    padding: 10px 0;
-}
-
-.bottom-nav a {
-    color: white;
-    text-decoration: none;
-    font-size: 14px;
-    font-weight: bold;
-}
 .status {
     padding: 4px 10px;
     border-radius: 999px;
@@ -138,56 +124,6 @@ button {
     border-radius: 6px;
     text-decoration: none;
     font-size: 12px;
-}
-
-body {
-    margin: 0;
-    font-family: "Hiragino Sans", "Yu Gothic", sans-serif;
-    background: #f5f1eb;
-    color: #4b3428;
-}
-
-.phone-frame {
-    max-width: 390px;
-    margin: 20px auto;
-    min-height: 100vh;
-    background: #f3eee7;
-    border-radius: 28px;
-    overflow: hidden;
-    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
-    position: relative;
-}
-
-.top-bar {
-    height: 72px;
-    background: linear-gradient(180deg, #8b654f, #7a563f);
-    color: white;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 0 18px;
-}
-
-.top-bar h1 {
-    margin: 0;
-    font-size: 18px;
-    font-weight: 700;
-}
-
-.back-button {
-    color: white;
-    text-decoration: none;
-    font-size: 34px;
-    line-height: 1;
-}
-
-.top-bar-space {
-    width: 24px;
-}
-
-.content {
-    padding: 16px;
-    padding-bottom: 90px;
 }
 
 .history-summary {
@@ -269,15 +205,30 @@ body {
     padding: 12px 0 10px;
 }
 
+.bottom-nav a,
 .nav-item {
     color: #f4e7d3;
     text-decoration: none;
     font-size: 14px;
     font-weight: 600;
-    opacity: 0.8;
+    opacity: 0.85;
 }
 
+.bottom-nav a.active,
 .nav-item.active {
     opacity: 1;
     color: #ffd98c;
+}
+
+@media (max-width: 430px) {
+    body {
+        padding: 0;
+    }
+
+    .phone-frame {
+        width: 100%;
+        min-height: 100vh;
+        border-radius: 0;
+        box-shadow: none;
+    }
 }
