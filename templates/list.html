@@ -6,7 +6,7 @@
 {% for row in data %}
 <div class="list-item">
     <div>
-        <strong>{{ row[1] }}</strong><br>
+        <a href="/history/{{ row[1] }}"><strong>{{ row[1] }}</strong></a><br>
 
         {% set date = row[6].split('-') %}
         日付：{{ date[0] }}年{{ date[1]|int }}月{{ date[2]|int }}日<br>
