@@ -82,19 +82,19 @@ def delete(id):
     return redirect("/list")
 
 
-@app.route("/history")
-def history():
+@app.route("/history/<item_name>")
+def history(item_name):
     init_db()
 
     conn = sqlite3.connect("stock.db")
     cur = conn.cursor()
 
-    cur.execute("SELECT * FROM purchases WHERE item_name = 'いちご' ORDER BY id DESC")
+    cur.execute("SELECT * FROM purchases WHERE item_name = ? ORDER BY id DESC", (item_name,))
     data = cur.fetchall()
 
     conn.close()
 
-    return render_template("history.html", data=data)
+    return render_template("history.html", data=data, item_name=item_name)
 
 
 @app.route("/monthly")
