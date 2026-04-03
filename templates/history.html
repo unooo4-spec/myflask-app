@@ -1,19 +1,31 @@
-{% extends "base.html" %}
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>履歴</title>
+</head>
+<body>
+    <h1>履歴</h1>
 
-{% block content %}
-<div class="card">
-    <h2>いちごの履歴</h2>
+    <table border="1" cellpadding="8">
+        <tr>
+            <th>品物</th>
+            <th>個数合計</th>
+            <th>金額合計</th>
+        </tr>
 
-    {% for row in data %}
-    <div class="list-item">
-        <div>
-            <strong>{{ row[1] }}</strong><br>
-            数量: {{ row[2] }}
-        </div>
-        <div>
-            {{ row[3] }}円
-        </div>
-    </div>
-    {% endfor %}
-</div>
-{% endblock %}
+        {% for row in data %}
+        <tr>
+            <td>{{ row[0] }}</td>
+            <td>{{ row[1] }}</td>
+            <td>{{ row[2] }}円</td>
+        </tr>
+        {% endfor %}
+    </table>
+
+    <br>
+    <a href="/">入力に戻る</a>
+    <a href="/list">在庫一覧</a>
+    <a href="/monthly">月別</a>
+</body>
+</html>
