@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>在庫管理アプリ</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="phone">
+        <header class="app-header">
+            <h1>在庫管理アプリ</h1>
+        </header>
+
+        <main class="content">
+            {% block content %}{% endblock %}
+        </main>
+
+        <nav class="bottom-nav">
+            <a href="/">入力</a>
+            <a href="/list">在庫</a>
+            <a href="/history">履歴</a>
+            <a href="/monthly">月別</a>
+        </nav>
+    </div>
+</body>
+</html>

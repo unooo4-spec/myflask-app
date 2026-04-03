@@ -1,0 +1,107 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="card">
+    <h2>仕入れ入力</h2>
+
+    <form action="/add" method="POST">
+        <input type="hidden" name="purchase_date" id="purchase_date">
+        <input type="hidden" name="unit" id="unit">
+        <input type="hidden" name="unit_price" id="unit_price">
+
+        <label for="item_name">商品名</label>
+        <select name="item_name" id="item_name" required onchange="updateItemInfo()">
+            <option value="ブラジル">ブラジル</option>
+            <option value="コロンビア">コロンビア</option>
+            <option value="グアテマラ">グアテマラ</option>
+            <option value="エチオピア">エチオピア</option>
+            <option value="インドネシア">インドネシア</option>
+            <option value="薄力粉">薄力粉</option>
+            <option value="砂糖">砂糖</option>
+            <option value="バター">バター</option>
+            <option value="卵">卵</option>
+            <option value="生クリーム">生クリーム</option>
+            <option value="牛乳">牛乳</option>
+            <option value="ガムシロップ">ガムシロップ</option>
+            <option value="ホイップクリーム">ホイップクリーム</option>
+            <option value="紙ナプキン">紙ナプキン</option>
+            <option value="コーヒーフィルター">コーヒーフィルター</option>
+            <option value="砂糖の小袋">砂糖の小袋</option>
+            <option value="ミルクポーション">ミルクポーション</option>
+        </select>
+
+        <label for="quantity">個数</label>
+        <input type="number" name="quantity" id="quantity" required oninput="calculateTotal()">
+
+        <div class="card" style="margin-top: 16px;">
+            <p><strong>仕入れ日：</strong><span id="display_date"></span></p>
+            <p><strong>単位：</strong><span id="display_unit"></span></p>
+            <p><strong>単価：</strong><span id="display_price"></span>円</p>
+            <p><strong>合計：</strong><span id="total">0</span>円</p>
+        </div>
+
+        <button type="submit">保存する</button>
+    </form>
+</div>
+
+<script>
+const itemData = {
+    "ブラジル": { unit: "1キロ", price: 2000 },
+    "コロンビア": { unit: "1キロ", price: 2000 },
+    "グアテマラ": { unit: "1キロ", price: 2000 },
+    "エチオピア": { unit: "1キロ", price: 4000 },
+    "インドネシア": { unit: "1キロ", price: 4000 },
+    "薄力粉": { unit: "1キロ", price: 200 },
+    "砂糖": { unit: "1キロ", price: 200 },
+    "バター": { unit: "200グラム", price: 400 },
+    "卵": { unit: "1パック(10個)", price: 300 },
+    "生クリーム": { unit: "1リットル", price: 600 },
+    "牛乳": { unit: "1リットル", price: 200 },
+    "ガムシロップ": { unit: "1リットル", price: 500 },
+    "ホイップクリーム": { unit: "1本", price: 400 },
+    "紙ナプキン": { unit: "100枚", price: 300 },
+    "コーヒーフィルター": { unit: "100枚", price: 400 },
+    "砂糖の小袋": { unit: "100本", price: 500 },
+    "ミルクポーション": { unit: "50個", price: 600 }
+};
+
+function getTodayDate() {
+    const today = new Date();
+    const year = today.getFullYear();
+    const month = String(today.getMonth() + 1).padStart(2, "0");
+    const day = String(today.getDate()).padStart(2, "0");
+    return `${year}-${month}-${day}`;
+}
+
+function formatJapaneseDate(dateString) {
+    const parts = dateString.split("-");
+    return `${parts[0]}年${parseInt(parts[1])}月${parseInt(parts[2])}日`;
+}
+
+function updateItemInfo() {
+    const item = document.getElementById("item_name").value;
+    const info = itemData[item];
+
+    document.getElementById("unit").value = info.unit;
+    document.getElementById("unit_price").value = info.price;
+    document.getElementById("display_unit").textContent = info.unit;
+    document.getElementById("display_price").textContent = info.price;
+
+    calculateTotal();
+}
+
+function calculateTotal() {
+    const quantity = parseInt(document.getElementById("quantity").value) || 0;
+    const unitPrice = parseInt(document.getElementById("unit_price").value) || 0;
+    const total = quantity * unitPrice;
+    document.getElementById("total").textContent = total;
+}
+
+window.onload = function () {
+    const today = getTodayDate();
+    document.getElementById("purchase_date").value = today;
+    document.getElementById("display_date").textContent = formatJapaneseDate(today);
+    updateItemInfo();
+};
+</script>
+{% endblock %}

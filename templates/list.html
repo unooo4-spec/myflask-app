@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h2>在庫一覧</h2>
+
+{% for row in data %}
+<div class="list-item">
+    <div>
+        <strong>{{ row[1] }}</strong><br>
+
+        {% set date = row[6].split('-') %}
+        日付：{{ date[0] }}年{{ date[1]|int }}月{{ date[2]|int }}日<br>
+
+        数量：{{ row[2] }} {{ row[3] }}<br>
+        単価：{{ row[4] }}円<br>
+        合計：{{ row[5] }}円
+    </div>
+
+    <div>
+        {% if row[2] <= 2 %}
+            <span class="status danger">要発注</span>
+        {% elif row[2] <= 4 %}
+            <span class="status warning">少ない</span>
+        {% else %}
+            <span class="status safe">十分</span>
+        {% endif %}
+
+        <br><br>
+        <a href="/delete/{{ row[0] }}" class="delete-btn">削除</a>
+    </div>
+</div>
+{% endfor %}
+{% endblock %}

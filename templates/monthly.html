@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="card">
+    <h2>月別仕入れ</h2>
+
+    <form action="/monthly" method="GET">
+        <label for="month">月を選ぶ</label>
+        <input type="month" name="month" id="month" value="{{ selected_month }}">
+        <button type="submit">表示する</button>
+    </form>
+
+    {% if selected_month %}
+        {% set month_parts = selected_month.split('-') %}
+        <h3>{{ month_parts[0] }}年{{ month_parts[1]|int }}月</h3>
+    {% else %}
+        <h3>全期間</h3>
+    {% endif %}
+
+    {% set ns = namespace(total_sum=0) %}
+    {% for row in data %}
+        {% set ns.total_sum = ns.total_sum + row[2] %}
+    {% endfor %}
+
+    <h3>合計：¥{{ ns.total_sum }}</h3>
+
+    {% for row in data %}
+    <div class="list-item">
+        <div>
+            <strong>{{ row[0] }}</strong><br>
+            個数：{{ row[1] }}
+        </div>
+        <div>
+            ¥{{ row[2] }}
+        </div>
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}

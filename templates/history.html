@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="card">
+    <h2>いちごの履歴</h2>
+
+    {% for row in data %}
+    <div class="list-item">
+        <div>
+            <strong>{{ row[1] }}</strong><br>
+            数量: {{ row[2] }}
+        </div>
+        <div>
+            {{ row[3] }}円
+        </div>
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}

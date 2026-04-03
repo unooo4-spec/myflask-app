@@ -1,0 +1,141 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+    background: #f3f0eb;
+    display: flex;
+    justify-content: center;
+    padding: 20px 0;
+}
+
+.phone {
+    width: 390px;
+    min-height: 844px;
+    background: #f7f3ef;
+    border-radius: 28px;
+    overflow: hidden;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.15);
+    position: relative;
+}
+
+.app-header {
+    background: #8b6a52;
+    color: white;
+    text-align: center;
+    padding: 16px;
+}
+
+.app-header h1 {
+    margin: 0;
+    font-size: 22px;
+}
+
+.content {
+    padding: 16px 16px 90px;
+}
+
+.card {
+    background: white;
+    padding: 16px;
+    border-radius: 12px;
+    margin-bottom: 16px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+}
+
+input, select {
+    width: 100%;
+    padding: 10px;
+    margin-top: 6px;
+    margin-bottom: 12px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+}
+
+button {
+    width: 100%;
+    padding: 12px;
+    background: #8b5e3c;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    font-size: 16px;
+}
+
+.list-item {
+    background: white;
+    border-radius: 12px;
+    padding: 14px;
+    margin-bottom: 12px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+}
+
+.status {
+    padding: 4px 10px;
+    border-radius: 999px;
+    color: white;
+    font-size: 13px;
+    font-weight: bold;
+}
+
+.danger {
+    background: #d9534f;
+}
+
+.warning {
+    background: #f0ad4e;
+}
+
+.safe {
+    background: #5cb85c;
+}
+
+.bottom-nav {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    background: #6f4e37;
+    display: flex;
+    justify-content: space-around;
+    padding: 10px 0;
+}
+
+.bottom-nav a {
+    color: white;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: bold;
+}
+.status {
+    padding: 4px 10px;
+    border-radius: 999px;
+    color: white;
+    font-size: 13px;
+    font-weight: bold;
+}
+
+.danger {
+    background: #d9534f;
+}
+
+.warning {
+    background: #f0ad4e;
+}
+
+.safe {
+    background: #5cb85c;
+}
+
+.delete-btn {
+    display: inline-block;
+    margin-top: 8px;
+    padding: 6px 10px;
+    background: #d9534f;
+    color: white;
+    border-radius: 6px;
+    text-decoration: none;
+    font-size: 12px;
+}
