@@ -3,13 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>在庫管理アプリ</title>
+    <title>{% block title %}在庫管理アプリ{% endblock %}</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body>
-    <div class="phone">
-        <header class="app-header">
+    <div class="phone-frame">
+        <header class="top-bar">
+            <div class="top-bar-space"></div>
             <h1>在庫管理アプリ</h1>
+            <div class="top-bar-space"></div>
         </header>
 
         <main class="content">
@@ -17,10 +19,10 @@
         </main>
 
         <nav class="bottom-nav">
-            <a href="/">入力</a>
-            <a href="/list">在庫</a>
-            <a href="/history">履歴</a>
-            <a href="/monthly">月別</a>
+            <a href="/" class="{% if request.path == '/' %}active{% endif %}">入力</a>
+            <a href="/list" class="{% if request.path == '/list' %}active{% endif %}">在庫</a>
+            <a href="/history" class="{% if request.path == '/history' %}active{% endif %}">履歴</a>
+            <a href="/monthly" class="{% if request.path == '/monthly' %}active{% endif %}">月別</a>
         </nav>
     </div>
 </body>
