@@ -1,44 +1,22 @@
-<!DOCTYPE html>
-<html lang="ja">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>履歴</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
-</head>
-<body>
-    <div class="phone-frame">
-        <header class="top-bar">
-            <a href="/list" class="back-button">‹</a>
-            <h1>履歴</h1>
-            <div class="top-bar-space"></div>
-        </header>
+{% extends "base.html" %}
 
-        <main class="content">
-            <div class="summary-box">
-                <span class="summary-label">商品数</span>
-                <span class="summary-value">{{ data|length }}</span>
-            </div>
+{% block title %}履歴{% endblock %}
 
-            <div class="history-list">
-                {% for row in data %}
-                <div class="history-row">
-                    <div class="history-left">
-                        <div class="item-name">{{ row[0] }}</div>
-                        <div class="item-meta">個数合計 {{ row[1] }}</div>
-                    </div>
-                    <div class="history-right">¥{{ row[2] }}</div>
-                </div>
-                {% endfor %}
-            </div>
-        </main>
+{% block content %}
+<div class="summary-box">
+    <span class="summary-label">商品数</span>
+    <span class="summary-value">{{ data|length }}</span>
+</div>
 
-        <nav class="bottom-nav">
-            <a href="/">入力</a>
-            <a href="/list">在庫</a>
-            <a href="/history" class="active">履歴</a>
-            <a href="/monthly">月別</a>
-        </nav>
+<div class="history-list">
+    {% for row in data %}
+    <div class="history-row">
+        <div class="history-left">
+            <div class="item-name">{{ row[0] }}</div>
+            <div class="item-meta">個数合計 {{ row[1] }}</div>
+        </div>
+        <div class="history-right">¥{{ row[2] }}</div>
     </div>
-</body>
-</html>
+    {% endfor %}
+</div>
+{% endblock %}
