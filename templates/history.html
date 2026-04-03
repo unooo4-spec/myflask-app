@@ -2,30 +2,45 @@
 <html lang="ja">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>履歴</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body>
-    <h1>履歴</h1>
+    <div class="phone-frame">
+        <header class="top-bar">
+            <a href="/list" class="back-button">‹</a>
+            <h1>履歴</h1>
+            <div class="top-bar-space"></div>
+        </header>
 
-    <table border="1" cellpadding="8">
-        <tr>
-            <th>品物</th>
-            <th>個数合計</th>
-            <th>金額合計</th>
-        </tr>
+        <main class="content">
+            <div class="history-summary">
+                <div class="summary-box">
+                    <span class="summary-label">商品数</span>
+                    <span class="summary-value">{{ data|length }}</span>
+                </div>
+            </div>
 
-        {% for row in data %}
-        <tr>
-            <td>{{ row[0] }}</td>
-            <td>{{ row[1] }}</td>
-            <td>{{ row[2] }}円</td>
-        </tr>
-        {% endfor %}
-    </table>
+            <div class="history-list">
+                {% for row in data %}
+                <div class="history-row">
+                    <div class="history-left">
+                        <div class="item-name">{{ row[0] }}</div>
+                        <div class="item-meta">個数合計 {{ row[1] }}</div>
+                    </div>
+                    <div class="history-right">¥{{ row[2] }}</div>
+                </div>
+                {% endfor %}
+            </div>
+        </main>
 
-    <br>
-    <a href="/">入力に戻る</a>
-    <a href="/list">在庫一覧</a>
-    <a href="/monthly">月別</a>
+        <nav class="bottom-nav">
+            <a href="/" class="nav-item">入力</a>
+            <a href="/list" class="nav-item">在庫</a>
+            <a href="/history" class="nav-item active">履歴</a>
+            <a href="/monthly" class="nav-item">月別</a>
+        </nav>
+    </div>
 </body>
 </html>
